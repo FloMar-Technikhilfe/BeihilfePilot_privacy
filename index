@@ -1,0 +1,179 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung – BeihilfePilot</title>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.65;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: #1c1c1e;
+        background: #ffffff;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 0.25rem;
+    }
+
+    h2 {
+        margin-top: 2.2rem;
+        font-size: 1.2rem;
+        border-bottom: 1px solid #e5e5ea;
+        padding-bottom: 0.35rem;
+    }
+
+    p {
+        margin: 0.8rem 0;
+    }
+
+    .meta {
+        color: #6e6e73;
+        margin-bottom: 2rem;
+    }
+
+    .box {
+        background: #f5f5f7;
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-top: 1rem;
+    }
+
+    a {
+        color: #007aff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<h1>Datenschutzerklärung</h1>
+<p class="meta">BeihilfePilot – Stand: Mai 2026</p>
+
+<div class="box">
+    <strong>Verantwortlicher</strong><br>
+    Florian Gräwe<br>
+    Anschrift<br>
+    <a href="mailto:flomartechnikhilfe@icloud.com">flomartechnikhilfe@icloud.com</a>
+</div>
+
+<h2>Allgemeine Hinweise</h2>
+
+<p>
+BeihilfePilot unterstützt dich beim Erfassen, Verwalten und Nachverfolgen von Rechnungen, Rezepten, Erstattungen und zugehörigen Dokumenten. Dabei können personenbezogene Daten und Gesundheitsdaten verarbeitet werden.
+</p>
+
+<p>
+Diese Datenschutzerklärung beschreibt die technische Datenverarbeitung in der App. Sie ersetzt keine anwaltliche Prüfung.
+</p>
+
+<h2>Lokal verarbeitete Daten</h2>
+
+<p>
+Die App verarbeitet insbesondere Angaben zu Arztrechnungen, Rezepten, Medikamentennamen, Beträgen, Rechnungsdatum, Fälligkeit, Rechnungsnummer, IBAN, Verwendungszweck sowie PKV- und Beihilfe-Status.
+</p>
+
+<p>
+Zusätzlich können Erstattungsbeträge, Notizen, importierte Dateinamen, Dokumentmetadaten und OCR-Ergebnisse verarbeitet werden.
+</p>
+
+<h2>Gesundheits- und Rechnungsdaten</h2>
+
+<p>
+Rechnungen, Rezepte, Medikamentennamen, Praxisangaben und Dokumentinhalte können Rückschlüsse auf die Gesundheit zulassen. Diese Daten werden besonders vertraulich behandelt und dienen ausschließlich den Funktionen der App.
+</p>
+
+<h2>OCR und Dokumentanalyse</h2>
+
+<p>
+Apple Vision OCR läuft lokal auf dem Gerät. BeihilfePilot verwendet keine externe KI/OCR und übermittelt OCR-Inhalte nicht an eigene Server des App-Anbieters.
+</p>
+
+<p>
+Erkannte Werte werden als Vorschläge angezeigt oder – sofern vom Nutzer aktiviert – automatisch in Formularfelder übernommen. DEBUG-OCR-Logs sind nur in DEBUG-Builds aktiv und stellen keine produktive Datenspeicherung in Release-Versionen dar.
+</p>
+
+<h2>Kamera, Scan und Dateiimport</h2>
+
+<p>
+Für Scans nutzt die App die Kamera und die systemeigene Dokumentkamera. Dateiimport erfolgt über die von iOS bereitgestellte Dateiauswahl für PDF- und Bilddateien.
+</p>
+
+<p>
+Importierte oder gescannte Dokumente werden erst durch deine Aktion einer Rechnung oder einem Rezept zugeordnet.
+</p>
+
+<h2>Speicherung</h2>
+
+<p>
+Rechnungs-, Rezept- und Erstattungsdaten werden lokal mit SwiftData im App-Speicher gespeichert. Dokumentdateien werden lokal im App-Speicher abgelegt.
+</p>
+
+<p>
+CloudKit ist in der aktuellen App-Konfiguration deaktiviert.
+</p>
+
+<h2>Export, Teilen und Weitergabe durch den Nutzer</h2>
+
+<p>
+Export in die Dateien-App, Teilen von Zahlungsdaten oder andere Weitergaben erfolgen ausschließlich auf ausdrückliche Nutzeraktion. Die ausgewählten Ziel-Apps oder Speicherorte liegen außerhalb der Kontrolle von BeihilfePilot.
+</p>
+
+<p>
+Die App betreibt keine eigenen Server für Rechnungs-, Rezept-, Dokument- oder OCR-Daten.
+</p>
+
+<h2>PKV-/Beihilfe-Status</h2>
+
+<p>
+Die App kann speichern, ob eine Rechnung bei Beihilfe oder privater Krankenversicherung eingereicht wurde und ob Beträge erstattet oder bezahlt sind. Diese Angaben bleiben lokal in der App gespeichert.
+</p>
+
+<h2>Mitteilungen</h2>
+
+<p>
+Wenn Erinnerungen aktiviert sind und du Mitteilungen erlaubst, plant die App lokale Benachrichtigungen zu Fälligkeiten. Diese Erinnerungen werden über die Mitteilungsfunktionen des Betriebssystems verwaltet.
+</p>
+
+<h2>Keine Analyse-, Werbe- oder Trackingdienste</h2>
+
+<p>
+BeihilfePilot verwendet keine Analyse-, Werbe- oder Trackingdienste. Es wurden keine externen OCR-, KI- oder Serverdienste für die Verarbeitung deiner Rechnungs- und Gesundheitsdaten integriert.
+</p>
+
+<h2>Rechtsgrundlagen</h2>
+
+<p>
+Soweit die DSGVO anwendbar ist, erfolgt die Verarbeitung zur Bereitstellung der App-Funktionen und auf Grundlage deiner Nutzung und Eingaben. Gesundheitsdaten werden nur verarbeitet, wenn du sie in der App erfasst, importierst oder scannst.
+</p>
+
+<h2>Empfänger</h2>
+
+<p>
+Der App-Anbieter erhält durch die App keine Rechnungs-, Rezept-, Dokument- oder OCR-Inhalte. Empfänger können nur von dir gewählte Ziele sein, etwa Dateien-App-Ordner, Share-Ziele oder Apple-Dienste, sofern du entsprechende Systemfunktionen nutzt.
+</p>
+
+<h2>Speicherdauer</h2>
+
+<p>
+Daten bleiben gespeichert, bis du sie in der App löschst, exportierte Kopien außerhalb der App entfernst oder die App samt lokaler Daten löschst. Lokale Mitteilungen werden entfernt, wenn sie nicht mehr benötigt werden oder die zugehörige Rechnung gelöscht wird.
+</p>
+
+<h2>Rechte betroffener Personen</h2>
+
+<p>
+Soweit gesetzlich anwendbar, bestehen Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Du kannst dich dazu an die oben genannte Kontaktadresse wenden.
+</p>
+
+</body>
+</html>
+```
