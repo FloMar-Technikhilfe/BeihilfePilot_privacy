@@ -1,178 +1,386 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Datenschutzerklärung – BeihilfePilot</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung – BeihilfePilot</title>
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfbf9;
+      --color-surface-2: #f3f0ec;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #7a7974;
+      --color-text-inverse: #f9f8f4;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #cedcd8;
+      --color-success: #437a22;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(40, 37, 29, 0.06);
+      --shadow-md: 0 8px 24px rgba(40, 37, 29, 0.08);
+      --font-body: Inter, "Helvetica Neue", Arial, sans-serif;
+      --font-display: Inter, "Helvetica Neue", Arial, sans-serif;
+      --content-default: 920px;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #22211f;
+      --color-border: #393836;
+      --color-divider: #262523;
+      --color-text: #cdccca;
+      --color-text-muted: #a4a29d;
+      --color-text-inverse: #1c1b19;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #227f8b;
+      --color-primary-highlight: #313b3b;
+      --color-success: #6daa45;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.65;
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 0 20px;
-        color: #1c1c1e;
-        background: #ffffff;
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.65;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 24%),
+        var(--color-bg);
     }
 
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 0.25rem;
+    a, button { transition: all var(--transition-interactive); }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: var(--space-4);
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+    }
+    .skip-link:focus { left: var(--space-4); }
+
+    .page {
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin: 0 auto;
+      padding: var(--space-8) 0 var(--space-16);
     }
 
-    h2 {
-        margin-top: 2.2rem;
-        font-size: 1.2rem;
-        border-bottom: 1px solid #e5e5ea;
-        padding-bottom: 0.35rem;
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      flex-wrap: wrap;
     }
 
-    p {
-        margin: 0.8rem 0;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .logo-panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100%;
+    }
+
+    .logo-box {
+      width: 160px;
+      height: 160px;
+      border-radius: 9999px;
+      border: 1px solid color-mix(in srgb, var(--color-primary) 24%, var(--color-border));
+      background: var(--color-surface-2);
+      display: grid;
+      place-items: center;
+      padding: var(--space-2);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      flex-shrink: 0;
+    }
+
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 9999px;
+    }
+
+    .brand-copy h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.1;
+    }
+
+    .brand-copy p {
+      margin: var(--space-1) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .theme-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 9999px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .theme-toggle:hover { background: var(--color-surface-2); }
+
+    .hero, .section-card {
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+
+    .hero h2 {
+      margin: 0 0 var(--space-4);
+      font-size: var(--text-lg);
     }
 
     .meta {
-        color: #6e6e73;
-        margin-bottom: 2rem;
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-divider);
     }
 
-    .box {
-        background: #f5f5f7;
-        border-radius: 14px;
-        padding: 18px 20px;
-        margin-top: 1rem;
+    .meta a {
+      color: var(--color-primary);
+      text-decoration: none;
     }
 
-    a {
-        color: #007aff;
-        text-decoration: none;
+    .meta a:hover {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
     }
 
-    a:hover {
-        text-decoration: underline;
+    .meta strong { display: block; margin-bottom: var(--space-1); }
+
+    .summary-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--space-4);
     }
-</style>
+
+    .summary-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-3);
+      align-items: start;
+      padding: var(--space-4);
+      background: var(--color-surface-2);
+      border-radius: var(--radius-lg);
+      border: 1px solid color-mix(in srgb, var(--color-success) 18%, var(--color-border));
+    }
+
+    .check {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      background: color-mix(in srgb, var(--color-success) 18%, transparent);
+      color: var(--color-success);
+      font-weight: 700;
+      margin-top: 0.1rem;
+    }
+
+    .sections {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .section-card {
+      padding: var(--space-6);
+    }
+
+    .section-card h3 {
+      margin: 0 0 var(--space-4);
+      font-size: var(--text-lg);
+    }
+
+    .section-card p {
+      margin: 0 0 var(--space-3);
+      max-width: 72ch;
+    }
+
+    .section-card p:last-child { margin-bottom: 0; }
+
+    footer {
+      margin-top: var(--space-8);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      text-align: center;
+    }
+
+    .hint {
+      margin-top: var(--space-6);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-primary-highlight);
+      color: var(--color-text);
+      font-size: var(--text-sm);
+    }
+
+    @media (max-width: 640px) {
+      .page { width: min(calc(100% - 1rem), var(--content-default)); padding-top: var(--space-4); }
+      .hero, .section-card { padding: var(--space-5); }
+      .topbar { align-items: flex-start; }
+      .brand { align-items: flex-start; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .logo-panel { justify-content: flex-start; }
+      .logo-box { width: 112px; height: 112px; }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
-<h1>Datenschutzerklärung</h1>
-<p class="meta">BeihilfePilot – Stand: Mai 2026</p>
+  <main class="page" id="inhalt">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-copy">
+          <h1>Datenschutzerklärung</h1>
+          <p>BeihilfePilot · Stand: Mai 2026</p>
+        </div>
+      </div>
 
-<div class="box">
-    <strong>Verantwortlicher</strong><br>
-    Florian Gräwe<br>
-    Anschrift<br>
-    <a href="mailto:flomartechnikhilfe@icloud.com">flomartechnikhilfe@icloud.com</a>
-</div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Darstellung umschalten">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </header>
 
-<h2>Allgemeine Hinweise</h2>
+    <section class="hero" aria-labelledby="verantwortlich-heading">
+      <div class="hero-layout">
+        <div>
+          <h2 id="verantwortlich-heading">Verantwortlich</h2>
+          <div class="meta">
+            <div>
+              <strong>FloMar Technik-Hilfe</strong>
+            </div>
+            <div>
+              <strong>Anschrift</strong>
+            </div>
+            <div>
+              <strong>E-Mail</strong>
+              <a href="mailto:kontakt@flomar-technik-hilfe.de">kontakt@flomar-technik-hilfe.de</a>
+            </div>
+          </div>
+        </div>
+        <div class="logo-panel">
+          <div class="logo-box" aria-label="FloMar Technik-Hilfe Logo">
+            <img src="images/FloMar-Logo-Rund.jpg" alt="FloMar Technik-Hilfe Logo" width="160" height="160" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
 
-<p>
-BeihilfePilot unterstützt dich beim Erfassen, Verwalten und Nachverfolgen von Rechnungen, Rezepten, Erstattungen und zugehörigen Dokumenten. Dabei können personenbezogene Daten und Gesundheitsdaten verarbeitet werden.
-</p>
+    <section class="section-card" aria-labelledby="kurz-gesagt-heading">
+      <h2 id="kurz-gesagt-heading">Kurz gesagt</h2>
+      <ul class="summary-list">
+        <li><span class="check">✓</span><span>Die Dokumenterkennung erfolgt direkt auf deinem Gerät.</span></li>
+        <li><span class="check">✓</span><span>Rechnungen und Gesundheitsdaten werden nicht an externe KI-, OCR- oder Analyse-Server des App-Anbieters übertragen.</span></li>
+        <li><span class="check">✓</span><span>Dokumente bleiben in der App sichtbar. Eine zusätzliche Ablage in einem Ordner oder iCloud Drive erfolgt nur, wenn du entsprechende Systemfunktionen oder die Ordnerablage nutzt.</span></li>
+      </ul>
+    </section>
 
-<p>
-Diese Datenschutzerklärung beschreibt die technische Datenverarbeitung in der App. Sie ersetzt keine anwaltliche Prüfung.
-</p>
+    <section class="sections" aria-label="Rechtliche Abschnitte">
+      <article class="section-card"><h3>Datenschutzerklärung</h3><p>BeihilfePilot hilft dir, Rechnungen, Rezepte, Erstattungen und zugehörige Dokumente zu erfassen und im Blick zu behalten.</p><p>Dabei können personenbezogene Daten und Gesundheitsdaten verarbeitet werden. Diese Erklärung beschreibt verständlich, welche Daten die App nutzt und wo sie gespeichert werden.</p></article>
+      <article class="section-card"><h3>Welche Daten verarbeitet werden</h3><p>Du kannst zum Beispiel Angaben zu Rechnungen, Rezepten, Arzt oder Praxis, Beträgen, Rechnungsnummern, Fälligkeiten, Zahlungsdaten, PKV-/Beihilfe-Status und Erstattungen speichern.</p><p>Wenn du Dokumente importierst oder scannst, können außerdem Dateinamen, Dokumente und erkannte Textwerte verarbeitet werden.</p></article>
+      <article class="section-card"><h3>Gesundheitsdaten</h3><p>Rechnungen, Rezepte, Praxisangaben, Medikamentennamen und Dokumentinhalte können Rückschlüsse auf deine Gesundheit zulassen. Die App verwendet diese Daten nur für die Funktionen, die du selbst nutzt.</p></article>
+      <article class="section-card"><h3>Lokale Verarbeitung</h3><p>Rechnungs-, Rezept-, Erstattungs- und Dokumentdaten werden lokal im App-Speicher auf deinem Gerät gespeichert.</p><p>Die Dokumenterkennung und OCR-Auswertung erfolgen lokal auf deinem Gerät. BeihilfePilot sendet dafür keine medizinischen Inhalte an externe KI-, OCR- oder Analyse-Server des App-Anbieters.</p></article>
+      <article class="section-card"><h3>iCloud und Apple-Dienste</h3><p>Die App-Konfiguration verwendet kein CloudKit für eine eigene iCloud-Synchronisierung der App-Daten.</p><p>Wenn du systemeigene Funktionen nutzt, zum Beispiel Dateien-App, iCloud Drive, Teilen, QuickLook-Vorschau oder Mitteilungen, verarbeitet Apple diese Funktionen nach den jeweiligen Systemeinstellungen und Apple-Bedingungen.</p></article>
+      <article class="section-card"><h3>Dokumente und Dateien-App</h3><p>Importierte oder gescannte Dokumente bleiben in der App sichtbar, solange du sie dort nicht löschst.</p><p>Optional kannst du zusätzlich einen Ordner auf deinem iPhone oder in der Dateien-App auswählen. Dann kann die App dort eine zusätzliche Kopie eines Dokuments ablegen. Diese Ablage ist unabhängig von der Datenansicht in der App.</p></article>
+      <article class="section-card"><h3>Kamera, Import und Vorschau</h3><p>Für Scans nutzt die App die Kamera und die systemeigene Dokumentkamera. Dateien wählst du über die Dateiauswahl von iOS aus.</p><p>Dokumente können mit der systemeigenen Vorschau angezeigt werden. Die Zuordnung zu einer Rechnung oder einem Rezept erfolgt durch deine Nutzung der App.</p></article>
+      <article class="section-card"><h3>Erinnerungen</h3><p>Wenn du Erinnerungen aktivierst und Mitteilungen erlaubst, plant die App lokale Benachrichtigungen zu Fälligkeiten. Die Benachrichtigungen werden über die Mitteilungsfunktionen des Betriebssystems verwaltet.</p></article>
+      <article class="section-card"><h3>Weitergabe durch dich</h3><p>Daten werden weitergegeben, wenn du selbst eine entsprechende Aktion auslöst, zum Beispiel einen Ordner auswählst, eine Datei exportierst, Zahlungsdaten teilst oder Inhalte an eine andere App übergibst.</p><p>Die ausgewählten Ziel-Apps oder Speicherorte liegen außerhalb von BeihilfePilot.</p></article>
+      <article class="section-card"><h3>Keine Werbung und kein Tracking</h3><p>BeihilfePilot verwendet keine Werbe-, Tracking- oder Analyse-Dienste für dein Nutzungsverhalten.</p><p>Der App-Anbieter betreibt keine eigenen Server, an die Rechnungs-, Rezept-, Dokument- oder Erkennungsinhalte übertragen werden.</p></article>
+      <article class="section-card"><h3>Rechtsgrundlage</h3><p>Soweit die DSGVO anwendbar ist, erfolgt die Verarbeitung zur Bereitstellung der App-Funktionen und auf Grundlage deiner Eingaben und Nutzung der App.</p><p>Gesundheitsdaten werden verarbeitet, wenn du sie in der App erfasst, importierst oder scannst.</p></article>
+      <article class="section-card"><h3>Speicherdauer und Kontrolle</h3><p>Daten bleiben gespeichert, bis du sie in der App löschst oder die App samt lokaler Daten entfernst. Zusätzlich exportierte Kopien verwaltest du am jeweiligen Speicherort selbst.</p><p>Du behältst die Kontrolle darüber, welche Dokumente du importierst, scannst, speicherst, exportierst oder teilst.</p></article>
+      <article class="section-card"><h3>Deine Rechte</h3><p>Soweit gesetzlich anwendbar, kannst du Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit oder Widerspruch verlangen.</p><p>Du kannst dich dazu an die oben genannte Kontaktadresse wenden.</p></article>
+    </section>
 
-<h2>Lokal verarbeitete Daten</h2>
+    <div class="hint">
+      Lege für GitHub die Bilddatei in <code>images/FloMar-Logo-Rund.jpg</code> ab, damit das Logo korrekt geladen wird.
+    </div>
 
-<p>
-Die App verarbeitet insbesondere Angaben zu Arztrechnungen, Rezepten, Medikamentennamen, Beträgen, Rechnungsdatum, Fälligkeit, Rechnungsnummer, IBAN, Verwendungszweck sowie PKV- und Beihilfe-Status.
-</p>
+    <footer>
+      HTML-Fassung der Datenschutzerklärung für BeihilfePilot.
+    </footer>
+  </main>
 
-<p>
-Zusätzlich können Erstattungsbeträge, Notizen, importierte Dateinamen, Dokumentmetadaten und OCR-Ergebnisse verarbeitet werden.
-</p>
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const button = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
 
-<h2>Gesundheits- und Rechnungsdaten</h2>
+      function renderIcon(mode) {
+        button.innerHTML = mode === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+      }
 
-<p>
-Rechnungen, Rezepte, Medikamentennamen, Praxisangaben und Dokumentinhalte können Rückschlüsse auf die Gesundheit zulassen. Diese Daten werden besonders vertraulich behandelt und dienen ausschließlich den Funktionen der App.
-</p>
-
-<h2>OCR und Dokumentanalyse</h2>
-
-<p>
-Apple Vision OCR läuft lokal auf dem Gerät. BeihilfePilot verwendet keine externe KI/OCR und übermittelt OCR-Inhalte nicht an eigene Server des App-Anbieters.
-</p>
-
-<p>
-Erkannte Werte werden als Vorschläge angezeigt oder – sofern vom Nutzer aktiviert – automatisch in Formularfelder übernommen. DEBUG-OCR-Logs sind nur in DEBUG-Builds aktiv und stellen keine produktive Datenspeicherung in Release-Versionen dar.
-</p>
-
-<h2>Kamera, Scan und Dateiimport</h2>
-
-<p>
-Für Scans nutzt die App die Kamera und die systemeigene Dokumentkamera. Dateiimport erfolgt über die von iOS bereitgestellte Dateiauswahl für PDF- und Bilddateien.
-</p>
-
-<p>
-Importierte oder gescannte Dokumente werden erst durch deine Aktion einer Rechnung oder einem Rezept zugeordnet.
-</p>
-
-<h2>Speicherung</h2>
-
-<p>
-Rechnungs-, Rezept- und Erstattungsdaten werden lokal mit SwiftData im App-Speicher gespeichert. Dokumentdateien werden lokal im App-Speicher abgelegt.
-</p>
-
-<p>
-CloudKit ist in der aktuellen App-Konfiguration deaktiviert.
-</p>
-
-<h2>Export, Teilen und Weitergabe durch den Nutzer</h2>
-
-<p>
-Export in die Dateien-App, Teilen von Zahlungsdaten oder andere Weitergaben erfolgen ausschließlich auf ausdrückliche Nutzeraktion. Die ausgewählten Ziel-Apps oder Speicherorte liegen außerhalb der Kontrolle von BeihilfePilot.
-</p>
-
-<p>
-Die App betreibt keine eigenen Server für Rechnungs-, Rezept-, Dokument- oder OCR-Daten.
-</p>
-
-<h2>PKV-/Beihilfe-Status</h2>
-
-<p>
-Die App kann speichern, ob eine Rechnung bei Beihilfe oder privater Krankenversicherung eingereicht wurde und ob Beträge erstattet oder bezahlt sind. Diese Angaben bleiben lokal in der App gespeichert.
-</p>
-
-<h2>Mitteilungen</h2>
-
-<p>
-Wenn Erinnerungen aktiviert sind und du Mitteilungen erlaubst, plant die App lokale Benachrichtigungen zu Fälligkeiten. Diese Erinnerungen werden über die Mitteilungsfunktionen des Betriebssystems verwaltet.
-</p>
-
-<h2>Keine Analyse-, Werbe- oder Trackingdienste</h2>
-
-<p>
-BeihilfePilot verwendet keine Analyse-, Werbe- oder Trackingdienste. Es wurden keine externen OCR-, KI- oder Serverdienste für die Verarbeitung deiner Rechnungs- und Gesundheitsdaten integriert.
-</p>
-
-<h2>Rechtsgrundlagen</h2>
-
-<p>
-Soweit die DSGVO anwendbar ist, erfolgt die Verarbeitung zur Bereitstellung der App-Funktionen und auf Grundlage deiner Nutzung und Eingaben. Gesundheitsdaten werden nur verarbeitet, wenn du sie in der App erfasst, importierst oder scannst.
-</p>
-
-<h2>Empfänger</h2>
-
-<p>
-Der App-Anbieter erhält durch die App keine Rechnungs-, Rezept-, Dokument- oder OCR-Inhalte. Empfänger können nur von dir gewählte Ziele sein, etwa Dateien-App-Ordner, Share-Ziele oder Apple-Dienste, sofern du entsprechende Systemfunktionen nutzt.
-</p>
-
-<h2>Speicherdauer</h2>
-
-<p>
-Daten bleiben gespeichert, bis du sie in der App löschst, exportierte Kopien außerhalb der App entfernst oder die App samt lokaler Daten löschst. Lokale Mitteilungen werden entfernt, wenn sie nicht mehr benötigt werden oder die zugehörige Rechnung gelöscht wird.
-</p>
-
-<h2>Rechte betroffener Personen</h2>
-
-<p>
-Soweit gesetzlich anwendbar, bestehen Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Du kannst dich dazu an die oben genannte Kontaktadresse wenden.
-</p>
-
+      renderIcon(theme);
+      button.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        renderIcon(theme);
+      });
+    })();
+  </script>
 </body>
 </html>
-```
